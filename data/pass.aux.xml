@@ -1,0 +1,17 @@
+<PAMDataset>
+  <Metadata domain="ESRI">
+    <MDI key="PyramidResamplingType">NEAREST</MDI>
+  </Metadata>
+  <PAMRasterBand band="1">
+    <Description>2011c1</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="2">
+    <Description>2011c2</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="3">
+    <Description>2011c3</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="4">
+    <Description>2011c4</Description>
+  </PAMRasterBand>
+</PAMDataset>
