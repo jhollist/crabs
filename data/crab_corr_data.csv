@@ -1179,259 +1179,223 @@ vcb,17,soil_% organic,0.354
 vcb,18,soil_% organic,0.2448
 vcb,19,soil_% organic,0.3093
 vcb,20,soil_% organic,0.2446
-mp,1,burrow_density,0
-mp,2,burrow_density,0
-mp,3,burrow_density,0
-mp,4,burrow_density,0
-mp,5,burrow_density,0
-mp,6,burrow_density,0
+mp,1,burrow_density,0.3333
+mp,2,burrow_density,26.3333
+mp,3,burrow_density,14
+mp,4,burrow_density,7
+mp,5,burrow_density,5.3333
+mp,6,burrow_density,2.6667
 mp,7,burrow_density,0
 mp,8,burrow_density,0
-mp,9,burrow_density,0
-mp,10,burrow_density,0.3333
-mp,11,burrow_density,0.3333
-mp,12,burrow_density,0.6667
-mp,13,burrow_density,1.6667
-mp,14,burrow_density,2.6667
-mp,15,burrow_density,5.3333
-mp,16,burrow_density,5.6667
-mp,17,burrow_density,7
-mp,18,burrow_density,9.3333
-mp,19,burrow_density,14
-mp,20,burrow_density,26.3333
+mp,9,burrow_density,5.6667
+mp,10,burrow_density,1.6667
+mp,11,burrow_density,0
+mp,12,burrow_density,0
+mp,13,burrow_density,0.3333
+mp,14,burrow_density,0
+mp,15,burrow_density,0
+mp,16,burrow_density,0
+mp,17,burrow_density,0
+mp,18,burrow_density,0
+mp,19,burrow_density,9.3333
+mp,20,burrow_density,0.6667
 mp,1,spalt,0
-mp,2,spalt,96
-mp,3,spalt,84
-mp,4,spalt,96
-mp,5,spalt,36
-mp,6,spalt,76
+mp,2,spalt,0
+mp,3,spalt,0
+mp,4,spalt,0
+mp,5,spalt,0
+mp,6,spalt,88
 mp,7,spalt,0
-mp,8,spalt,0
+mp,8,spalt,96
 mp,9,spalt,0
-mp,10,spalt,0
-mp,11,spalt,0
-mp,12,spalt,0
-mp,13,spalt,44
-mp,14,spalt,88
-mp,15,spalt,0
+mp,10,spalt,44
+mp,11,spalt,84
+mp,12,spalt,96
+mp,13,spalt,0
+mp,14,spalt,36
+mp,15,spalt,76
 mp,16,spalt,0
 mp,17,spalt,0
 mp,18,spalt,0
 mp,19,spalt,0
 mp,20,spalt,0
-mp,1,sppat,100
-mp,2,sppat,0
+mp,1,sppat,52
+mp,2,sppat,88
 mp,3,sppat,0
 mp,4,sppat,0
-mp,5,sppat,0
-mp,6,sppat,28
+mp,5,sppat,84
+mp,6,sppat,0
 mp,7,sppat,100
-mp,8,sppat,52
-mp,9,sppat,100
-mp,10,sppat,52
-mp,11,sppat,96
+mp,8,sppat,0
+mp,9,sppat,0
+mp,10,sppat,4
+mp,11,sppat,0
 mp,12,sppat,0
-mp,13,sppat,4
+mp,13,sppat,96
 mp,14,sppat,0
-mp,15,sppat,84
-mp,16,sppat,0
-mp,17,sppat,0
+mp,15,sppat,28
+mp,16,sppat,100
+mp,17,sppat,52
 mp,18,sppat,100
-mp,19,sppat,0
-mp,20,sppat,88
-mp,1,dispi,4
-mp,2,dispi,0
-mp,3,dispi,0
-mp,4,dispi,0
-mp,5,dispi,0
-mp,6,dispi,2
-mp,7,dispi,8
-mp,8,dispi,62
-mp,9,dispi,8
-mp,10,dispi,96
-mp,11,dispi,36
-mp,12,dispi,100
-mp,13,dispi,8
+mp,19,sppat,100
+mp,20,sppat,0
+mp,1,dispi,96
+mp,2,dispi,24
+mp,3,dispi,100
+mp,4,dispi,52
+mp,5,dispi,32
+mp,6,dispi,0
+mp,7,dispi,4
+mp,8,dispi,0
+mp,9,dispi,0
+mp,10,dispi,8
+mp,11,dispi,0
+mp,12,dispi,0
+mp,13,dispi,36
 mp,14,dispi,0
-mp,15,dispi,32
-mp,16,dispi,0
-mp,17,dispi,52
-mp,18,dispi,12
-mp,19,dispi,100
-mp,20,dispi,24
-mp,2,bare,1
-mp,3,bare,16
-mp,4,bare,4
-mp,5,bare,64
-mp,6,bare,16
-mp,8,bare,0
-mp,9,bare,0
-mp,10,bare,0
-mp,11,bare,4
-mp,12,bare,0
-mp,13,bare,48
-mp,14,bare,12
-mp,15,bare,0
-mp,16,bare,100
-mp,17,bare,36
-mp,20,bare,4
+mp,15,dispi,2
+mp,16,dispi,8
+mp,17,dispi,62
+mp,18,dispi,8
+mp,19,dispi,12
+mp,20,dispi,100
 mp,1,sa_height,NA
-mp,2,sa_height,21.83
-mp,3,sa_height,25.75
-mp,4,sa_height,31.25
-mp,5,sa_height,10.33
-mp,6,sa_height,31.09
+mp,2,sa_height,NA
+mp,3,sa_height,NA
+mp,4,sa_height,NA
+mp,5,sa_height,NA
+mp,6,sa_height,NA
 mp,7,sa_height,NA
-mp,8,sa_height,NA
+mp,8,sa_height,21.83
 mp,9,sa_height,NA
-mp,10,sa_height,NA
-mp,11,sa_height,NA
-mp,12,sa_height,NA
-mp,13,sa_height,17.5
-mp,14,sa_height,NA
-mp,15,sa_height,NA
+mp,10,sa_height,17.5
+mp,11,sa_height,25.75
+mp,12,sa_height,31.25
+mp,13,sa_height,NA
+mp,14,sa_height,10.33
+mp,15,sa_height,31.09
 mp,16,sa_height,NA
 mp,17,sa_height,NA
 mp,18,sa_height,NA
 mp,19,sa_height,NA
 mp,20,sa_height,NA
-mp,1,sp_height,33.08
-mp,2,sp_height,NA
+mp,1,sp_height,33.92
+mp,2,sp_height,27.08
 mp,3,sp_height,NA
 mp,4,sp_height,NA
-mp,5,sp_height,NA
-mp,6,sp_height,21.17
-mp,7,sp_height,40.83
-mp,8,sp_height,37
-mp,9,sp_height,51.25
-mp,10,sp_height,33.92
-mp,11,sp_height,25.83
+mp,5,sp_height,33.58
+mp,6,sp_height,NA
+mp,7,sp_height,33.08
+mp,8,sp_height,NA
+mp,9,sp_height,NA
+mp,10,sp_height,16
+mp,11,sp_height,NA
 mp,12,sp_height,NA
-mp,13,sp_height,16
+mp,13,sp_height,25.83
 mp,14,sp_height,NA
-mp,15,sp_height,33.58
-mp,16,sp_height,NA
-mp,17,sp_height,NA
-mp,18,sp_height,36.58
-mp,19,sp_height,NA
-mp,20,sp_height,27.08
-mp,1,ds_height,31.67
-mp,2,ds_height,NA
-mp,3,ds_height,NA
-mp,4,ds_height,NA
-mp,5,ds_height,NA
-mp,6,ds_height,21.83
-mp,7,ds_height,18.83
-mp,8,ds_height,26.25
-mp,9,ds_height,18.25
-mp,10,ds_height,33.33
-mp,11,ds_height,27.08
-mp,12,ds_height,36.5
-mp,13,ds_height,18.57
+mp,15,sp_height,21.17
+mp,16,sp_height,40.83
+mp,17,sp_height,37
+mp,18,sp_height,51.25
+mp,19,sp_height,36.58
+mp,20,sp_height,NA
+mp,1,ds_height,33.33
+mp,2,ds_height,22.17
+mp,3,ds_height,40.75
+mp,4,ds_height,21.58
+mp,5,ds_height,30.73
+mp,6,ds_height,NA
+mp,7,ds_height,31.67
+mp,8,ds_height,NA
+mp,9,ds_height,NA
+mp,10,ds_height,18.57
+mp,11,ds_height,NA
+mp,12,ds_height,NA
+mp,13,ds_height,27.08
 mp,14,ds_height,NA
-mp,15,ds_height,30.73
-mp,16,ds_height,NA
-mp,17,ds_height,21.58
-mp,18,ds_height,20
-mp,19,ds_height,40.75
-mp,20,ds_height,22.17
-mp,1,mean_elevation,0.6653
-mp,2,mean_elevation,0.6163
-mp,3,mean_elevation,0.6522
-mp,4,mean_elevation,0.688
-mp,5,mean_elevation,0.6535
-mp,6,mean_elevation,0.643
-mp,7,mean_elevation,0.773
-mp,8,mean_elevation,0.867
-mp,9,mean_elevation,0.847
-mp,10,mean_elevation,0.3997
-mp,11,mean_elevation,0.628
-mp,12,mean_elevation,0.694
-mp,13,mean_elevation,0.6763
-mp,14,mean_elevation,0.557
-mp,15,mean_elevation,0.5153
-mp,16,mean_elevation,0.588
-mp,17,mean_elevation,0.5826
-mp,18,mean_elevation,0.755
-mp,19,mean_elevation,0.6092
-mp,20,mean_elevation,0.4181
-mp,1,soil_bulk density,0.1673
-mp,2,soil_bulk density,0.1939
-mp,3,soil_bulk density,0.1737
-mp,4,soil_bulk density,0.1028
-mp,5,soil_bulk density,0.1987
-mp,6,soil_bulk density,0.1276
-mp,7,soil_bulk density,0.2253
-mp,8,soil_bulk density,0.2085
-mp,9,soil_bulk density,0.181
-mp,10,soil_bulk density,0.547
-mp,11,soil_bulk density,0.1472
-mp,12,soil_bulk density,0.1929
-mp,13,soil_bulk density,0.1915
-mp,14,soil_bulk density,0.1677
-mp,15,soil_bulk density,0.3479
-mp,16,soil_bulk density,0.2319
-mp,17,soil_bulk density,0.2952
-mp,18,soil_bulk density,0.2687
-mp,19,soil_bulk density,0.1426
-mp,20,soil_bulk density,1.0114
-mp,1,soil_% moisture,0.8144
-mp,2,soil_% moisture,0.805
-mp,3,soil_% moisture,0.8472
-mp,4,soil_% moisture,0.859
-mp,5,soil_% moisture,0.8156
-mp,6,soil_% moisture,0.8546
-mp,7,soil_% moisture,0.8297
-mp,8,soil_% moisture,0.8435
-mp,9,soil_% moisture,0.8051
-mp,10,soil_% moisture,0.6503
-mp,11,soil_% moisture,0.8097
-mp,12,soil_% moisture,0.8119
-mp,13,soil_% moisture,0.8501
-mp,14,soil_% moisture,0.8314
-mp,15,soil_% moisture,0.7688
-mp,16,soil_% moisture,0.8201
-mp,17,soil_% moisture,0.7871
-mp,18,soil_% moisture,0.7996
-mp,19,soil_% moisture,0.7848
-mp,20,soil_% moisture,0.4328
-mp,1,soil_% organic,0.4871
-mp,2,soil_% organic,0.5621
-mp,3,soil_% organic,0.5725
-mp,4,soil_% organic,0.5775
-mp,5,soil_% organic,0.5623
-mp,6,soil_% organic,0.636
-mp,7,soil_% organic,0.5588
-mp,8,soil_% organic,0.5901
-mp,9,soil_% organic,0.5558
-mp,10,soil_% organic,0.1803
-mp,11,soil_% organic,0.4594
-mp,12,soil_% organic,0.4375
-mp,13,soil_% organic,0.6372
-mp,14,soil_% organic,0.542
-mp,15,soil_% organic,0.3464
-mp,16,soil_% organic,0.4984
-mp,17,soil_% organic,0.4271
-mp,18,soil_% organic,0.4977
-mp,19,soil_% organic,0.424
-mp,20,soil_% organic,0.0851
-mp,1,shear_10,NA
-mp,2,shear_10,NA
-mp,3,shear_10,NA
-mp,4,shear_10,NA
-mp,5,shear_10,NA
-mp,6,shear_10,NA
-mp,7,shear_10,NA
-mp,8,shear_10,NA
-mp,9,shear_10,NA
-mp,10,shear_10,NA
-mp,11,shear_10,NA
-mp,12,shear_10,NA
-mp,13,shear_10,NA
-mp,14,shear_10,NA
-mp,15,shear_10,NA
-mp,16,shear_10,NA
-mp,17,shear_10,NA
-mp,18,shear_10,NA
-mp,19,shear_10,NA
-mp,20,shear_10,NA
+mp,15,ds_height,21.83
+mp,16,ds_height,18.83
+mp,17,ds_height,26.25
+mp,18,ds_height,18.25
+mp,19,ds_height,20
+mp,20,ds_height,36.5
+mp,1,mean_elevation,0.3997
+mp,2,mean_elevation,0.4181
+mp,3,mean_elevation,0.6092
+mp,4,mean_elevation,0.5826
+mp,5,mean_elevation,0.5153
+mp,6,mean_elevation,0.557
+mp,7,mean_elevation,0.6653
+mp,8,mean_elevation,0.6163
+mp,9,mean_elevation,0.588
+mp,10,mean_elevation,0.6763
+mp,11,mean_elevation,0.6522
+mp,12,mean_elevation,0.688
+mp,13,mean_elevation,0.628
+mp,14,mean_elevation,0.6535
+mp,15,mean_elevation,0.643
+mp,16,mean_elevation,0.773
+mp,17,mean_elevation,0.867
+mp,18,mean_elevation,0.847
+mp,19,mean_elevation,0.755
+mp,20,mean_elevation,0.694
+mp,1,soil_bulk density,0.547
+mp,2,soil_bulk density,1.0114
+mp,3,soil_bulk density,0.1426
+mp,4,soil_bulk density,0.2952
+mp,5,soil_bulk density,0.3479
+mp,6,soil_bulk density,0.1677
+mp,7,soil_bulk density,0.1673
+mp,8,soil_bulk density,0.1939
+mp,9,soil_bulk density,0.2319
+mp,10,soil_bulk density,0.1915
+mp,11,soil_bulk density,0.1737
+mp,12,soil_bulk density,0.1028
+mp,13,soil_bulk density,0.1472
+mp,14,soil_bulk density,0.1987
+mp,15,soil_bulk density,0.1276
+mp,16,soil_bulk density,0.2253
+mp,17,soil_bulk density,0.2085
+mp,18,soil_bulk density,0.181
+mp,19,soil_bulk density,0.2687
+mp,20,soil_bulk density,0.1929
+mp,1,soil_% moisture,0.6503
+mp,2,soil_% moisture,0.4328
+mp,3,soil_% moisture,0.7848
+mp,4,soil_% moisture,0.7871
+mp,5,soil_% moisture,0.7688
+mp,6,soil_% moisture,0.8314
+mp,7,soil_% moisture,0.8144
+mp,8,soil_% moisture,0.805
+mp,9,soil_% moisture,0.8201
+mp,10,soil_% moisture,0.8501
+mp,11,soil_% moisture,0.8472
+mp,12,soil_% moisture,0.859
+mp,13,soil_% moisture,0.8097
+mp,14,soil_% moisture,0.8156
+mp,15,soil_% moisture,0.8546
+mp,16,soil_% moisture,0.8297
+mp,17,soil_% moisture,0.8435
+mp,18,soil_% moisture,0.8051
+mp,19,soil_% moisture,0.7996
+mp,20,soil_% moisture,0.8119
+mp,1,soil_% organic,0.1803
+mp,2,soil_% organic,0.0851
+mp,3,soil_% organic,0.424
+mp,4,soil_% organic,0.4271
+mp,5,soil_% organic,0.3464
+mp,6,soil_% organic,0.542
+mp,7,soil_% organic,0.4871
+mp,8,soil_% organic,0.5621
+mp,9,soil_% organic,0.4984
+mp,10,soil_% organic,0.6372
+mp,11,soil_% organic,0.5725
+mp,12,soil_% organic,0.5775
+mp,13,soil_% organic,0.4594
+mp,14,soil_% organic,0.5623
+mp,15,soil_% organic,0.636
+mp,16,soil_% organic,0.5588
+mp,17,soil_% organic,0.5901
+mp,18,soil_% organic,0.5558
+mp,19,soil_% organic,0.4977
+mp,20,soil_% organic,0.4375

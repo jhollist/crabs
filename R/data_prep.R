@@ -10,6 +10,13 @@ ssht <- here::here("data/jho_correlation_data.xlsx")
 all_sheets <- lapply(excel_sheets(ssht), read_excel, path = ssht)
 names(all_sheets)<-excel_sheets(ssht)
 
+## Burrows MP sorted - using other MP variables to resort to same order
+new_order <- match(all_sheets$`Carcinus MP`$elevation, all_sheets$`Burrows MP`$`mean elevation`)
+all_sheets$`Burrows MP`<-all_sheets$`Burrows MP`[new_order,]
+
+## Burrows MP didn't have shear 10 - Should be same as other MP
+all_sheets$`Burrows MP`$`Shear 10` <- all_sheets$`Carcinus MP`$`shear 10`
+
 crab_cor_data <- data.frame()
 for(i in 1:length(all_sheets)){
   xdf <- all_sheets[[i]] %>%
@@ -26,6 +33,7 @@ for(i in 1:length(all_sheets)){
     rbind(.,crab_cor_data)
 }
 
+# Need to clean up variable names (elev and mean elev, spaalt and spalt, spapat and sppat, soil%, dispi and disspi, and height)
 crab_cor_data <- crab_cor_data %>%
   mutate(habitat = str_to_lower(habitat),
          variable = str_to_lower(variable)) %>%
