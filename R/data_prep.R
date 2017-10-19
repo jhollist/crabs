@@ -33,7 +33,21 @@ for(i in 1:length(all_sheets)){
     rbind(.,crab_cor_data)
 }
 
-# Need to clean up variable names (elev and mean elev, spaalt and spalt, spapat and sppat, soil%, dispi and disspi, and height)
+# Need to clean up variable names
+# 1.) elevation and mean_elevation -> elevation
+# 2.) dispi and disspi -> cover_disspi
+# 3.) spaalt and spalt -> cover_spaalt
+# 4.) spapat and sppat -> cover_spapat
+# 5.) shear and shear_10 -> shear_strength
+# 6.) ds_height and height_ds -> height_disspi
+# 7.) height_patens and sp_height -> height_spapat
+# 8.) sa_height and height_alt -> height_spaalt
+# 9.) moisture and soil_% moisture -> perc_moisture
+# 10.) organic and soil_% organic -> perc_organic
+# 11.) bulk and soil_bulk density -> bulk_density
+# 12.) ivafru -> cover_ivafru
+# 13.) junger -> cover_junger
+
 crab_cor_data <- crab_cor_data %>%
   mutate(habitat = str_to_lower(habitat),
          variable = str_to_lower(variable)) %>%
