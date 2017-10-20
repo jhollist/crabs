@@ -33,6 +33,16 @@ for(i in 1:length(all_sheets)){
     rbind(.,crab_cor_data)
 }
 
+crab_cor_data <- crab_cor_data %>%
+  mutate(habitat = str_to_lower(habitat),
+         variable = str_to_lower(variable)) %>%
+  mutate(variable = case_when(grepl(" - ", variable) ~
+                                str_replace(variable, " - ", "_"),
+                              grepl(" ", variable) ~ 
+                                str_replace(variable, " ", "_"),
+                              TRUE ~ variable)) %>%
+  unique()
+
 # Need to clean up variable names
 # 1.) elevation and mean_elevation -> elevation
 # 2.) dispi and disspi -> cover_disspi
@@ -49,13 +59,50 @@ for(i in 1:length(all_sheets)){
 # 13.) junger -> cover_junger
 
 crab_cor_data <- crab_cor_data %>%
-  mutate(habitat = str_to_lower(habitat),
-         variable = str_to_lower(variable)) %>%
-  mutate(variable = case_when(grepl(" - ", variable) ~
-                                str_replace(variable, " - ", "_"),
-                              grepl(" ", variable) ~ 
-                                str_replace(variable, " ", "_"),
-                              TRUE ~ variable)) %>%
+  mutate(variable = case_when(grepl("mean_elevation", variable) ~
+                                "elevation",
+                              grepl("dispi", variable) ~
+                                "cover_disspi",
+                              grepl("disspi", variable) ~
+                                "cover_disspi",
+                              grepl("spaalt", variable) ~
+                                "cover_spaalt",
+                              grepl("spalt", variable) ~
+                                "cover_spaalt",
+                              grepl("spapat", variable) ~
+                                "cover_spapat",
+                              grepl("sppat", variable) ~
+                                "cover_spapat",
+                              grepl("shear", variable) ~
+                                "shear_strength",
+                              grepl("shear_10", variable) ~
+                                "shear_strength",
+                              grepl("ds_height", variable) ~
+                                "height_disspi",
+                              grepl("height_ds", variable) ~
+                                "height_disspi",
+                              grepl("height_patens", variable) ~
+                                "height_spapat",
+                              grepl("sp_height", variable) ~
+                                "height_spapat",
+                              grepl("moisture", variable) ~
+                                "perc_mositure",
+                              grepl("soil_% moisture", variable) ~
+                                "perc_moisture",
+                              grepl("organic", variable) ~
+                                "perc_organic",
+                              grepl("soil_% organic", variable) ~
+                                "perc_organic",
+                              grepl("bulk", variable) ~
+                                "bulk_density",
+                              grepl("soil_bulk density", variable) ~
+                                "bulk_density",
+                              grepl("ivafru", variable) ~
+                                "cover_ivafru",
+                              grepl("junger", variable) ~
+                                "cover_junger",
+                              TRUE ~ variable
+                              )) %>%
   unique()
 
 write_csv(crab_cor_data,here("data/crab_corr_data.csv"))
