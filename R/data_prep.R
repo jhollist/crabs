@@ -86,7 +86,7 @@ crab_cor_data <- crab_cor_data %>%
                               grepl("sp_height", variable) ~
                                 "height_spapat",
                               grepl("moisture", variable) ~
-                                "perc_mositure",
+                                "perc_moisture",
                               grepl("soil_% moisture", variable) ~
                                 "perc_moisture",
                               grepl("organic", variable) ~
@@ -101,6 +101,14 @@ crab_cor_data <- crab_cor_data %>%
                                 "cover_ivafru",
                               grepl("junger", variable) ~
                                 "cover_junger",
+                              grepl("height_alt", variable) ~
+                                "height_spaalt",
+                              grepl("height_dis", variable) ~
+                                "height_disspi",
+                              grepl("height_jun", variable) ~
+                                "height_junger",
+                              grepl("sa_height", variable) ~
+                                "height_spaalt",
                               TRUE ~ variable
                               )) %>%
   unique()
