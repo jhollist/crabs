@@ -29,7 +29,7 @@ cor_gg_bd <- ggplot(crab_correlations_bd, aes(x = habitat, y = env_params)) +
   scale_size(range = c(1,5), guide = FALSE) +
   theme_ipsum() +
   scale_x_discrete(position = "top") +
-  labs(x = "", y = "", title = "A. Burrow Density") +
+  labs(x = "", y = "", title = expression(paste("A. Burrow Density"))) +
   theme(legend.text = element_text(size = 10),
         axis.text.x = element_text(angle= 45, hjust = 0))
 cor_gg_bd
