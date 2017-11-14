@@ -4,15 +4,10 @@ library(ggplot2)
 library(hrbrthemes)
 library(forcats)
 library(viridis)
+library(readr)
 
-crab_correlations <- read_csv(here("results/crab_correlations.csv"))
 
-hab_order <- c("bcb", "vcb", "mp", "iva")
-env_order <- c("cover_spaalt","cover_spapat","cover_disspi","cover_junger",
-               "cover_ivafru", "bare", "height_spaalt","height_spapat",
-               "height_disspi", "height_junger","elevation","bulk_density",
-               "perc_moisture","perc_organic","shear_strength")
-env_order <- env_order[length(env_order):1]
+## Function to build correlation matrix
 
 cor_fig <- function(df, crab, title = "Correlation Matrix"){
   
@@ -35,6 +30,8 @@ cor_fig <- function(df, crab, title = "Correlation Matrix"){
     labs(x = "", y = "", title = title) +
     theme(legend.text = element_text(size = 10),
           plot.margin = grid::unit(c(0,0,0,0),"line"),
+          plot.title = element_text(hjust = 0, size = 10, 
+                                    margin = margin(t = 2, b=-5, unit="pt")),
           axis.text.x = element_text(angle= 45, hjust = 0),
           legend.key.width=unit(2, "line"), 
           legend.key.height=unit(1.5, "line"))
@@ -88,6 +85,15 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   }
 }
 
+crab_correlations <- read_csv(here("results/crab_correlations.csv"))
+
+hab_order <- c("bcb", "vcb", "mp", "iva")
+env_order <- c("cover_spaalt","cover_spapat","cover_disspi","cover_junger",
+               "cover_ivafru", "bare", "height_spaalt","height_spapat",
+               "height_disspi", "height_junger","elevation","bulk_density",
+               "perc_moisture","perc_organic","shear_strength")
+env_order <- env_order[length(env_order):1]
+
 bd_gg <- cor_fig(crab_correlations,"burrow_density", 
                  expression(paste("A. Burrow Density")))
 uca_gg <- cor_fig(crab_correlations,"uca_cpue", 
@@ -97,7 +103,7 @@ carc_gg <- cor_fig(crab_correlations,"carcinus_cpue",
 ses_gg <- cor_fig(crab_correlations,"sesarma_cpue", 
                   expression(paste("D. ", italic("Sesarma"), " CPUE")))
 
-jpeg(here("figures/crab_cor_fig.jpg"), width = 7, units="in", res=150)
+jpeg(here("figures/crab_cor_fig.jpg"), width = 7, height = 7, units = "in",res=300)
 multiplot(bd_gg, carc_gg, uca_gg, ses_gg, cols = 2)
 dev.off()
   
