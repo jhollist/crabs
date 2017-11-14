@@ -18,7 +18,7 @@ calc_correlation <- function(xdf, hab){
   corr_df <- xdf %>%
       spread(variable, value) %>%
       filter(habitat == hab) %>%
-      select(-habitat,-site_id) %>%
+      select(-habitat,-site_id, -marsh) %>%
       corr.test(use="pairwise", adjust = "none")
 
   r <- data.frame(corr_df$r) %>%
