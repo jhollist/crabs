@@ -38,11 +38,11 @@ calc_correlation <- function(xdf, hab){
     left_join(p)
 }
 
-crab_corr_data <- read_csv(here("data/crab_corr_data.csv"))
+crab_data <- read_csv(here("data/crab_data.csv"))
 
 crab_correlations <- data.frame()
-for(i in unique(crab_corr_data$habitat)){
-  crab_correlations <- rbind(calc_correlation(crab_corr_data, i),crab_correlations)
+for(i in unique(crab_data$habitat)){
+  crab_correlations <- rbind(calc_correlation(crab_data, i),crab_correlations)
 }
 
 write_csv(crab_correlations, here("results/crab_correlations.csv"))

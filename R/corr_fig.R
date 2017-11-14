@@ -14,89 +14,33 @@ env_order <- c("cover_spaalt","cover_spapat","cover_disspi","cover_junger",
                "perc_moisture","perc_organic","shear_strength")
 env_order <- env_order[length(env_order):1]
 
-crab_correlations_bd <- crab_correlations %>%
-  filter(crab_params == "burrow_density") %>%
-  mutate(habitat = fct_relevel(factor(habitat), hab_order),
-         env_params = fct_relevel(factor(env_params), env_order))
-
-cor_gg_bd <- ggplot(crab_correlations_bd, aes(x = habitat, y = env_params)) +
-  geom_point(aes(size = abs(pearson_cor), color = pearson_cor)) + 
-  scale_color_viridis(name = "Pearson's\ncorrelation", 
+cor_fig <- function(df, crab, title = "Correlation Matrix"){
+  
+  df <- crab_correlations %>%
+    filter(crab_params == crab) %>%
+    mutate(habitat = fct_relevel(factor(habitat), hab_order),
+           env_params = fct_relevel(factor(env_params), env_order))
+  
+  gg <-  ggplot(df, aes(x = habitat, y = env_params)) +
+    geom_point(aes(size = abs(pearson_cor), color = pearson_cor)) + 
+    scale_color_viridis(name = "Pearson's\ncorrelation", 
                         limits = c(-1,1), #range(cor_df_long$value), 
                         breaks = c(1.0, 0.5, 0.0, -0.5, -1.0) ,#round(seq(max(cor_df_long$value), min(cor_df_long$value), length.out = 5), 2),
                         guide = guide_legend(override.aes = 
                                                list(size = c(5,2.5,1,2.5,5)), 
                                              reverse = FALSE)) +
-  scale_size(range = c(1,5), guide = FALSE) +
-  theme_ipsum() +
-  scale_x_discrete(position = "top") +
-  labs(x = "", y = "", title = "A. Burrow Density") +
-  theme(legend.text = element_text(size = 10),
-        axis.text.x = element_text(angle= 45, hjust = 0))
-cor_gg_bd
+    scale_size(range = c(1,5), guide = FALSE) +
+    theme_ipsum() +
+    scale_x_discrete(position = "top") +
+    labs(x = "", y = "", title = title) +
+    theme(legend.text = element_text(size = 10),
+          plot.margin = grid::unit(c(0,0,0,0),"line"),
+          axis.text.x = element_text(angle= 45, hjust = 0),
+          legend.key.width=unit(2, "line"), 
+          legend.key.height=unit(1.5, "line"))
+  gg
+}
 
-crab_correlations_uca <- crab_correlations %>%
-  filter(crab_params == "uca_cpue") %>%
-  mutate(habitat = fct_relevel(factor(habitat), hab_order),
-         env_params = fct_relevel(factor(env_params), env_order))
-
-cor_gg_uca <- ggplot(crab_correlations_uca, aes(x = habitat, y = env_params)) +
-  geom_point(aes(size = abs(pearson_cor), color = pearson_cor)) + 
-  scale_color_viridis(name = "Pearson's\ncorrelation", 
-                        limits = c(-1,1), #range(cor_df_long$value), 
-                        breaks = c(1.0, 0.5, 0.0, -0.5, -1.0) ,#round(seq(max(cor_df_long$value), min(cor_df_long$value), length.out = 5), 2),
-                        guide = guide_legend(override.aes = 
-                                               list(size = c(5,2.5,1,2.5,5)), 
-                                             reverse = FALSE)) +
-  scale_size(range = c(1,5), guide = FALSE) +
-  theme_ipsum() +
-  scale_x_discrete(position = "top") +
-  labs(x = "", y = "", title = expression(paste("B. ", italic("Uca"), " CPUE"))) +
-  theme(legend.text = element_text(size = 10),
-        axis.text.x = element_text(angle= 45, hjust = 0))
-cor_gg_uca
-
-crab_correlations_carc <- crab_correlations %>%
-  filter(crab_params == "carcinus_cpue") %>%
-  mutate(habitat = fct_relevel(factor(habitat), hab_order),
-         env_params = fct_relevel(factor(env_params), env_order))
-
-cor_gg_carc <- ggplot(crab_correlations_carc, aes(x = habitat, y = env_params)) +
-  geom_point(aes(size = abs(pearson_cor), color = pearson_cor)) + 
-  scale_color_viridis(name = "Pearson's\ncorrelation", 
-                        limits = c(-1,1), #range(cor_df_long$value), 
-                        breaks = c(1.0, 0.5, 0.0, -0.5, -1.0) ,#round(seq(max(cor_df_long$value), min(cor_df_long$value), length.out = 5), 2),
-                        guide = guide_legend(override.aes = 
-                                               list(size = c(5,2.5,1,2.5,5)), 
-                                             reverse = FALSE)) +
-  scale_size(range = c(1,5), guide = FALSE) +
-  theme_ipsum() +
-  scale_x_discrete(position = "top") +
-  labs(x = "", y = "", title = expression(paste("C. ", italic("Carcinus"), " CPUE"))) +
-  theme(legend.text = element_text(size = 10),
-        axis.text.x = element_text(angle= 45, hjust = 0))
-cor_gg_carc
-
-crab_correlations_ses <- crab_correlations %>%
-  filter(crab_params == "sesarma_cpue") %>%
-  mutate(habitat = fct_relevel(factor(habitat), hab_order),
-         env_params = fct_relevel(factor(env_params), env_order))
-
-cor_gg_ses <- ggplot(crab_correlations_ses, aes(x = habitat, y = env_params)) +
-  geom_point(aes(size = abs(pearson_cor), color = pearson_cor)) + 
-  scale_color_viridis(name = "Pearson's\ncorrelation", 
-                        limits = c(-1,1), #range(cor_df_long$value), 
-                        breaks = c(1.0, 0.5, 0.0, -0.5, -1.0) ,#round(seq(max(cor_df_long$value), min(cor_df_long$value), length.out = 5), 2),
-                        guide = guide_legend(override.aes = 
-                                               list(size = c(5,2.5,1,2.5,5)), 
-                                             reverse = FALSE)) +
-  scale_size(range = c(1,5), guide = FALSE) +
-  theme_ipsum() +
-  scale_x_discrete(position = "top") +
-  labs(x = "", y = "", title = expression(paste("D. ", italic("Sesarma"), " CPUE"))) +
-  theme(legend.text = element_text(size = 10),
-        axis.text.x = element_text(angle= 45, hjust = 0))
-cor_gg_ses
 
 # Multiple plot function
 #
@@ -144,9 +88,18 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   }
 }
 
-multiplot(cor_gg_bd, cor_gg_uca, cor_gg_carc, cor_gg_ses, cols = 2, rows = 2, height = 8)
+bd_gg <- cor_fig(crab_correlations,"burrow_density", 
+                 expression(paste("A. Burrow Density")))
+uca_gg <- cor_fig(crab_correlations,"uca_cpue", 
+                  expression(paste("B. ", italic("Uca"), " CPUE")))
+carc_gg <- cor_fig(crab_correlations,"carcinus_cpue", 
+                   expression(paste("C. ", italic("Carcinus"), " CPUE")))
+ses_gg <- cor_fig(crab_correlations,"sesarma_cpue", 
+                  expression(paste("D. ", italic("Sesarma"), " CPUE")))
 
-
+jpeg(here("figures/crab_cor_fig.jpg"), width = 7, units="in", res=150)
+multiplot(bd_gg, carc_gg, uca_gg, ses_gg, cols = 2)
+dev.off()
   
   
  

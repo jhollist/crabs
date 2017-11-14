@@ -6,6 +6,10 @@ library(readxl)
 library(readr)
 library(stringr)
 
+###################################
+## Crab and Environmental Data Prep
+###################################
+
 ssht <- here::here("data/jho_correlation_data.xlsx")
 all_sheets <- lapply(excel_sheets(ssht), read_excel, path = ssht)
 names(all_sheets)<-excel_sheets(ssht)
@@ -24,12 +28,12 @@ all_sheets$`Burrows MP`$`Shear 10` <- all_sheets$`Carcinus MP`$`shear 10`
 # recreate numbers in paper
 #marsh <- read_xlsx(path = here("data/jho_correlation_data.xlsx"),sheet = 1)$marsh
 
-crab_cor_data <- data.frame()
+crab_data <- data.frame()
 for(i in 1:length(all_sheets)){
   xdf <- all_sheets[[i]]
   if(any(grepl("X__",names(xdf)))){
     xdf <- xdf %>%
-      select(-X__1, -X__2)
+      select(-starts_with("X__"))
   }
   xdf <- xdf %>%
     mutate(marsh = marsh,
@@ -42,12 +46,12 @@ for(i in 1:length(all_sheets)){
     names(xdf)[2] <- "burrow density"
   }
 
-  crab_cor_data <- xdf %>%
+  crab_data <- xdf %>%
     gather(variable, value, c(-marsh, -habitat, -site_id)) %>%
-    rbind(.,crab_cor_data)
+    rbind(.,crab_data)
 }
 
-crab_cor_data <- crab_cor_data %>%
+crab_data <- crab_data %>%
   mutate(marsh = str_to_lower(marsh),
          habitat = str_to_lower(habitat),
          variable = str_to_lower(variable)) %>%
@@ -73,7 +77,7 @@ crab_cor_data <- crab_cor_data %>%
 # 12.) ivafru -> cover_ivafru
 # 13.) junger -> cover_junger
 
-crab_cor_data <- crab_cor_data %>%
+crab_data <- crab_data %>%
   mutate(variable = case_when(grepl("mean_elevation", variable) ~
                                 "elevation",
                               grepl("dispi", variable) ~
@@ -128,6 +132,11 @@ crab_cor_data <- crab_cor_data %>%
                               )) %>%
   unique()
 
-write_csv(crab_cor_data,here("data/crab_corr_data.csv"))
-              
+write_csv(crab_data,here("data/crab_data.csv"))
+
+#####################              
+## Temporal Data Prep
+#####################
+temporal_data <- read_excel(here("data/jho_temporal_data_summarized.xlsx"),2)
+
 
