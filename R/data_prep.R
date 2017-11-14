@@ -10,31 +10,46 @@ ssht <- here::here("data/jho_correlation_data.xlsx")
 all_sheets <- lapply(excel_sheets(ssht), read_excel, path = ssht)
 names(all_sheets)<-excel_sheets(ssht)
 
-## Burrows MP sorted - using other MP variables to resort to same order
+## Burrows MP sorted by mean burrow within site
+## using other MP variables to resort to same order
 new_order <- match(all_sheets$`Carcinus MP`$elevation, all_sheets$`Burrows MP`$`mean elevation`)
 all_sheets$`Burrows MP`<-all_sheets$`Burrows MP`[new_order,]
 
 ## Burrows MP didn't have shear 10 - Should be same as other MP
+#all_sheets$`Burrows MP`$shear_10_old <- all_sheets$`Burrows MP`$`Shear 10`
 all_sheets$`Burrows MP`$`Shear 10` <- all_sheets$`Carcinus MP`$`shear 10`
+
+# Pulling marsh from spreadsheets with f'ed up numbers
+# Going to try and add this to the original spreadsheet to see if I can
+# recreate numbers in paper
+#marsh <- read_xlsx(path = here("data/jho_correlation_data.xlsx"),sheet = 1)$marsh
 
 crab_cor_data <- data.frame()
 for(i in 1:length(all_sheets)){
-  xdf <- all_sheets[[i]] %>%
-    mutate(habitat = stringr::str_split(names(all_sheets)[i]," ")[[1]][2],
+  xdf <- all_sheets[[i]]
+  if(any(grepl("X__",names(xdf)))){
+    xdf <- xdf %>%
+      select(-X__1, -X__2)
+  }
+  xdf <- xdf %>%
+    mutate(marsh = marsh,
+           habitat = stringr::str_split(names(all_sheets)[i]," ")[[1]][2],
            site_id = row.names(.))
-  if(names(xdf)[1] == "CPUE"){
-    names(xdf)[1] <- paste(stringr::str_split(names(all_sheets)[i]," ")[[1]][1],
+  if(names(xdf)[2] == "CPUE"){
+    names(xdf)[2] <- paste(stringr::str_split(names(all_sheets)[i]," ")[[1]][1],
                           "cpue")
   } else {
-    names(xdf)[1] <- "burrow density"
+    names(xdf)[2] <- "burrow density"
   }
+
   crab_cor_data <- xdf %>%
-    gather(variable, value, c(-habitat, -site_id)) %>%
+    gather(variable, value, c(-marsh, -habitat, -site_id)) %>%
     rbind(.,crab_cor_data)
 }
 
 crab_cor_data <- crab_cor_data %>%
-  mutate(habitat = str_to_lower(habitat),
+  mutate(marsh = str_to_lower(marsh),
+         habitat = str_to_lower(habitat),
          variable = str_to_lower(variable)) %>%
   mutate(variable = case_when(grepl(" - ", variable) ~
                                 str_replace(variable, " - ", "_"),
