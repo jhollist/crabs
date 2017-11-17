@@ -1,14 +1,5 @@
-# Packages
-library(dplyr)
-library(tidyr)
-library(here)
-library(readxl)
-library(readr)
-library(stringr)
-
-###################################
-## Crab and Environmental Data Prep
-###################################
+# Code to prep data for figures and analysis
+source("R/functions.R")
 
 ssht <- here::here("data/jho_correlation_data.xlsx")
 all_sheets <- lapply(excel_sheets(ssht), read_excel, path = ssht)

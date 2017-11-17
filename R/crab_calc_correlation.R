@@ -1,8 +1,5 @@
-library(tidyverse)
-library(here)
-library(ggplot2)
-library(psych)
-source(here("R/functions.R"))
+# Code to caluclate correlations
+source("R/functions.R")
 
 crab_data <- read_csv(here("data/crab_data.csv"))
 

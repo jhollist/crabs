@@ -1,13 +1,5 @@
-library(tidyverse)
-library(here)
-library(ggplot2)
-library(hrbrthemes)
-library(forcats)
-library(viridis)
-library(readr)
-library(gridExtra)
-library(grid)
-source(here("R/functions.R"))
+# Code to generate corrlation matrix figure
+source("R/functions.R")
 
 crab_correlations <- read_csv(here("results/crab_correlations.csv"))
 

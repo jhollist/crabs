@@ -1,4 +1,12 @@
 # All functions used in analysis and viz for Raposa et al.
+library(tidyverse)
+library(here)
+library(psych)
+library(hrbrthemes)
+library(viridis)
+library(gridExtra)
+library(grid)
+library(readxl)
 
 # 95% Confidence Intervals of a vector
 ci_95 <- function(x){
@@ -109,6 +117,6 @@ crab_bar <- function(df, x = "x", y = "y", title = "title"){
   df %>%
     ggplot(aes(x = habitat, y = mean)) +
     geom_bar(stat = "identity") +
-    geom_errorbar(aes(ymin = lower_cl, ymax = upper_cl), width = 0.2) +
+    geom_linerange(aes(ymin = lower_cl, ymax = upper_cl), color = viridis(1)) +
     theme_ipsum(base_family = "sans")
 }

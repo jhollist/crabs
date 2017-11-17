@@ -1,8 +1,5 @@
-library(tidyverse)
-library(here)
-library(ggplot2)
-library(sf)
-source(here("R/functions.R"))
+# Code to generate marsh/site crab comparison charts
+source("R/functions.R")
 
 crab_data <- read_csv(here("data/crab_corr_data.csv"))
 
