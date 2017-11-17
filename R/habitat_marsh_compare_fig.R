@@ -46,7 +46,11 @@ sesarma_habitat_avg <- crab_data %>%
   summarize(mean = mean(value),
             lower_cl = ci_95(value)["ll"],
             upper_cl = ci_95(value)["ul"]) %>%
-  mutate(habitat = fct_relevel(habitat, c("bcb", "vcb", "mp", "iva")))
+  rbind(data.frame(habitat = c("mp","iva"),
+                   mean = c(NA,NA),
+                   lower_cl = c(NA,NA),
+                   upper_cl = c(NA,NA))) %>%
+  mutate(habitat = factor(habitat, c("bcb", "vcb", "mp", "iva")))
 
 carcinus_site_avg <- crab_data %>%
   filter(variable == "carcinus_cpue") %>%
@@ -61,12 +65,18 @@ carcinus_habitat_avg <- crab_data %>%
   summarize(mean = mean(value),
             lower_cl = ci_95(value)["ll"],
             upper_cl = ci_95(value)["ul"]) %>%
-  mutate(habitat = fct_relevel(habitat, c("bcb", "vcb", "mp", "iva")))
+  rbind(data.frame(habitat = c("iva"),
+                   mean = c(NA),
+                   lower_cl = c(NA),
+                   upper_cl = c(NA))) %>%
+  mutate(habitat = factor(habitat, c("bcb", "vcb", "mp", "iva")))
+  
+  
 
 bh_gg <- crab_bar(burrows_hab_avg, "habitat", y = "Burrow density", 
-                  x = "Habitat type", "")
+                  x = "Habitat type", "", ylim = c(0,50))
 bs_gg <- crab_bar(burrows_site_avg, "marsh", y = "Burrow density", 
-                  x = "Marsh", "")
+                  x = "Marsh", "", ylim = c(0,50))
 uh_gg <- crab_bar(uca_habitat_avg, "habitat", y = "Uca CPUE", 
                   x = "Habitat type", "")
 us_gg <- crab_bar(uca_site_avg, "marsh", y = "Uca CPUE", 
