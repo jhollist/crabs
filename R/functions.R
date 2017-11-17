@@ -84,14 +84,18 @@ cor_fig <- function(df, crab, title = "Correlation Matrix", ...){
 # Arranges ggplots with a shared legend
 # Source: https://github.com/tidyverse/ggplot2/wiki/share-a-legend-between-two-ggplot2-graphs
 
-grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, position = c("bottom", "right")) {
+grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, 
+                                       position = c("bottom", "right", "none")) {
   plots <- list(...)
+  #browser()
   position <- match.arg(position)
   g <- ggplotGrob(plots[[1]] + 
                     theme(legend.position = position))$grobs
-  legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
-  lheight <- sum(legend$height)
-  lwidth <- sum(legend$width)
+  if(position != "none"){
+    legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
+    lheight <- sum(legend$height)
+    lwidth <- sum(legend$width)
+  }
   gl <- lapply(plots, function(x) x +
                  theme(legend.position = "none"))
   gl <- c(gl, ncol = ncol, nrow = nrow)
@@ -102,7 +106,8 @@ grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, 
                                             heights = unit.c(unit(1, "npc") - lheight, lheight)),
                      "right" = arrangeGrob(do.call(arrangeGrob, gl),
                                            legend, ncol = 2,
-                                           widths = unit.c(unit(1, "npc") - lwidth, lwidth)))
+                                           widths = unit.c(unit(1, "npc") - lwidth, lwidth)),
+                     "none" = arrangeGrob(do.call(arrangeGrob, gl)))
   
   grid.newpage()
   grid.draw(combined)
@@ -113,10 +118,13 @@ grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, 
 
 # Function to develop bar charts comparing crab metrics over habitat and site
 
-crab_bar <- function(df, x = "x", y = "y", title = "title"){
+crab_bar <- function(df, xval, x = "x", y = "y", title = "title"){
+  if(xval == "habitat") {df$xval <- df$habitat}
+  if(xval == "marsh") {df$xval <- df$marsh}
   df %>%
-    ggplot(aes(x = habitat, y = mean)) +
+    ggplot(aes(x = xval, y = mean)) +
     geom_bar(stat = "identity") +
-    geom_linerange(aes(ymin = lower_cl, ymax = upper_cl), color = viridis(1)) +
-    theme_ipsum(base_family = "sans")
+    geom_linerange(aes(ymin = lower_cl, ymax = upper_cl), size = 1.25) +
+    theme_ipsum(base_family = "sans") +
+    labs(x = x, y = y, title = title)
 }
