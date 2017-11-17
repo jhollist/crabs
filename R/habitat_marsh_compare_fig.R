@@ -6,16 +6,16 @@ crab_data <- read_csv(here("data/crab_corr_data.csv"))
 burrows_site_avg <- crab_data %>%
   filter(variable == "burrow_density") %>%
   group_by(marsh) %>%
-  summarize(mean = mean(value),
-            lower_cl = ci_95(value)["ll"],
-            upper_cl = ci_95(value)["ul"]) 
+  summarize(mean = mean(value*4),
+            lower_cl = ci_95(value*4)["ll"],
+            upper_cl = ci_95(value*4)["ul"]) 
 
 burrows_hab_avg <- crab_data %>%
   filter(variable == "burrow_density") %>%
   group_by(habitat) %>%
-  summarize(mean = mean(value),
-            lower_cl = ci_95(value)["ll"],
-            upper_cl = ci_95(value)["ul"]) %>%
+  summarize(mean = mean(value*4),
+            lower_cl = ci_95(value*4)["ll"],
+            upper_cl = ci_95(value*4)["ul"]) %>%
   mutate(habitat = fct_relevel(habitat, c("bcb", "vcb", "mp", "iva")))
 
 uca_site_avg <- crab_data %>%
@@ -74,9 +74,9 @@ carcinus_habitat_avg <- crab_data %>%
   
 
 bh_gg <- crab_bar(burrows_hab_avg, "habitat", y = "Burrow density", 
-                  x = "Habitat type", "", ylim = c(0,50))
+                  x = "Habitat type", "", breaks = c(0,25,50,75,100,125,150))
 bs_gg <- crab_bar(burrows_site_avg, "marsh", y = "Burrow density", 
-                  x = "Marsh", "", ylim = c(0,50))
+                  x = "Marsh", "", breaks = c(0,25,50,75,100,125,150))
 uh_gg <- crab_bar(uca_habitat_avg, "habitat", y = "Uca CPUE", 
                   x = "Habitat type", "")
 us_gg <- crab_bar(uca_site_avg, "marsh", y = "Uca CPUE", 

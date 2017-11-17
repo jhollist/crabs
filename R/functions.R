@@ -118,14 +118,15 @@ grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1,
 
 # Function to develop bar charts comparing crab metrics over habitat and site
 
-crab_bar <- function(df, xval, x = "x", y = "y", title = "title", ylim = c(0,5)){
+crab_bar <- function(df, xval, x = "x", y = "y", title = "title", breaks = 0:5){
   if(xval == "habitat") {df$xval <- df$habitat}
   if(xval == "marsh") {df$xval <- df$marsh}
   df %>%
     ggplot(aes(x = xval, y = mean)) +
-    geom_bar(stat = "identity") +
+    geom_bar(stat = "identity", width = 0.5) +
     geom_linerange(aes(ymin = lower_cl, ymax = upper_cl), size = 1.25) +
     theme_ipsum(base_family = "sans") +
     labs(x = x, y = y, title = title) +
-    expand_limits(y = ylim)
+    scale_y_continuous(breaks = breaks) +
+    expand_limits(y=breaks)
 }
