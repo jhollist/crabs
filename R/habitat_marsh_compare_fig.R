@@ -79,7 +79,7 @@ ch_gg <- crab_bar(carcinus_habitat_avg, "habitat", y = "Carcinus CPUE",
                   x = "Habitat type", "")
 cs_gg <- crab_bar(carcinus_site_avg, "marsh", y = "Carcinus CPUE", 
                   x = "Marsh", "")
-jpeg("figures/crab_bar_figs.jpg", width = 7.5, height = 10, units = "in", 
+jpeg("figures/crab_bar_fig.jpg", width = 7.5, height = 10, units = "in", 
      res=300)
 grid_arrange_shared_legend(bs_gg, bh_gg, us_gg, uh_gg, 
                            ss_gg, sh_gg, cs_gg, ch_gg, 
