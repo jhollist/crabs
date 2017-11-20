@@ -11,8 +11,9 @@ env_order <- c("Cover - SPAALT","Cover - SPAPAT","Cover - DISSPI",
                "% moisture","% organic","Shear strength")
 env_order <- env_order[length(env_order):1]
 
+# This is fucked up.
 crab_correlations <- crab_correlations %>%
-  mutate(habitat = fct_relevel(factor(habitat,labels = hab_order), hab_order),
+  mutate(habitat = fct_relevel(factor(habitat,hab_order), hab_order),
          env_params = fct_relevel(factor(env_params, labels = env_order), env_order))
 
 bd_gg <- cor_fig(crab_correlations,"burrow_density", 
