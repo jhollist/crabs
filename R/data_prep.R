@@ -123,6 +123,32 @@ crab_data <- crab_data %>%
                               )) %>%
   unique()
 
+## Add in 0 CPUE lines for carcinus-iva, sesarma-mp, and sesarma-bcb
+##  This doesn't work...  ANOVA's still screwy.
+#carcinus-iva
+crab_data <- crab_data %>%
+  filter(variable == "uca_cpue") %>%
+  filter(habitat == "iva") %>%
+  mutate(variable = "carcinus_cpue", 
+         value = 0) %>%
+  rbind(crab_data) 
+
+#sesarma-mp
+crab_data <- crab_data %>%
+  filter(variable == "uca_cpue") %>%
+  filter(habitat == "mp") %>%
+  mutate(variable = "sesarma_cpue", 
+         value = 0) %>%
+  rbind(crab_data)
+
+#sesarma-iva
+crab_data <- crab_data %>%
+  filter(variable == "uca_cpue") %>%
+  filter(habitat == "iva") %>%
+  mutate(variable = "sesarma_cpue", 
+         value = 0) %>%
+  rbind(crab_data)
+
 write_csv(crab_data,here("data/crab_data.csv"))
 
 #####################              
