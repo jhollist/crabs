@@ -4,6 +4,10 @@ source("R/functions.R")
 crab_correlations <- read_csv(here("results/crab_correlations.csv"))
 
 hab_order <- c("bcb", "vcb", "mp", "iva")
+env <- c("Cover - Bare", "Bulk density", "Cover - DISSPI", "Cover - IVAFRU",
+         "Cover - JUNGER", "Cover - SPAALT", "Cover - SPAPAT","Elevation",
+         "Height - DISSPI","Height - JUNGER", "Height - SPAALT",
+         "Height - SPAPAT", "% moisture","% organic","Shear strength")
 env_order <- c("Cover - SPAALT","Cover - SPAPAT","Cover - DISSPI",
                "Cover - JUNGER","Cover - IVAFRU", "Cover - Bare", 
                "Height - SPAALT","Height - SPAPAT", "Height - DISSPI", 
@@ -11,10 +15,10 @@ env_order <- c("Cover - SPAALT","Cover - SPAPAT","Cover - DISSPI",
                "% moisture","% organic","Shear strength")
 env_order <- env_order[length(env_order):1]
 
-# This is fucked up.
 crab_correlations <- crab_correlations %>%
-  mutate(habitat = fct_relevel(factor(habitat,hab_order), hab_order),
-         env_params = fct_relevel(factor(env_params, labels = env_order), env_order))
+  mutate(habitat = fct_relevel(factor(habitat),hab_order),
+         env_params = fct_relevel(factor(crab_correlations$env_params,
+                                         labels = env), env_order))
 
 bd_gg <- cor_fig(crab_correlations,"burrow_density", 
                  expression(paste("A. Burrow Density")))

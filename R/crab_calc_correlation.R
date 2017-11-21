@@ -1,7 +1,8 @@
 # Code to caluclate correlations
 source("R/functions.R")
 
-crab_data <- read_csv(here("data/crab_data.csv")) 
+crab_data <- read_csv(here("data/crab_data.csv")) #%>%
+  #filter(variable != "mean_burrows")
 
 crab_correlations <- data.frame()
 for(i in unique(crab_data$habitat)){

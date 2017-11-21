@@ -25,5 +25,7 @@ sesarma_anova <- crab_data %>%
   lm(ranks ~ marsh + habitat + marsh:habitat, data = .) %>%
   anova()
 
+broom::tidy(bd_anova)
+broom::tidy(uca_anova)
 broom::tidy(carcinus_anova)
-
+broom::tidy(sesarma_anova)
