@@ -2,7 +2,7 @@
 ##################################
 ## Raw Data from master spreadsheet
 ##################################
-crab_data <- readxl::read_excel(here("data/Master file with all final data.xls"), skip = 1) %>%
+crab_data <- readxl::read_excel(here("data/raw/Master file with all final data.xls"), skip = 1) %>%
   select(marsh = Marsh, habitat = Type, site_id = `Plot #`,  
          mean_burrows = `mean burrows`, burrow_density = `mean burrows m2`,
          uca_cpue = `Uca mean`, cover_spaalt = SPALT, bare = BARE, 
