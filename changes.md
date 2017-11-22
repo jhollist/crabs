@@ -37,18 +37,26 @@ All check out, except burrow_density, shear_strength, mp.
 # Anova
 
 - Keep main anovas
-  - was able to reproduce Table 2. with exception of carcinus.  Slight diferences
-  in the F statistic.  Got this with master spreadsheet as source and also with 
-  anova spreadsheet as source.  Need to update values in Table 2.
+  - was able to reproduce Table 2. with exception of carcinus.  Slight 
+  diferences in the F statistic.  Got this with master spreadsheet as source and
+  also with anova spreadsheet as source.  Need to update values in Table 2.
 - Drop multiple comparisons and Table 3
   - small sample size for each comparison (only 10) and within habitats are 
   pseudo-replicates.
   - Not sure what it tells us
-  - yep, lots of differences between/within marsh and habitats, but I don't find that
-  very interesting.  The big picture diff's are more interesting.
+  - yep, lots of differences between/within marsh and habitats, but I don't find 
+  that very interesting.  The big picture diff's are more interesting.
 - anovas re-run in R/anovas.R
 - anova results output in results/anova_results.csv
 
 # Temporal
+
+- Temporal data was reorganized by hand and is in sheet 2 in 
+data/raw/jho_temporal_data_summarized.xls
+- Data read in an prepped in R/data_prep_temporal.R
+- Temporal figures built in R/temporal_fig.R
+- I would like to drop the water temperature plot.  It is flat, currently on a
+plot with two y-axis, and doesn't add much to the story (IMO).
+
 
 # Functions

@@ -1,3 +1,4 @@
+library(tidyverse)
 
 ##################################
 ## Raw Data from master spreadsheet
@@ -28,7 +29,3 @@ write_csv(crab_data,here("data/crab_data.csv"))
 
 
 
-#####################              
-## Temporal Data Prep
-#####################
-temporal_data <- read_excel(here("data/jho_temporal_data_summarized.xlsx"),2)

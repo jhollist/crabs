@@ -6,16 +6,16 @@ crab_data <- read_csv(here("data/crab_corr_data.csv"))
 burrows_site_avg <- crab_data %>%
   filter(variable == "burrow_density") %>%
   group_by(marsh) %>%
-  summarize(mean = mean(value*4),
-            lower_cl = ci_95(value*4)["ll"],
-            upper_cl = ci_95(value*4)["ul"]) 
+  summarize(mean = mean(value),
+            lower_cl = ci_95(value)["ll"],
+            upper_cl = ci_95(value)["ul"]) 
 
 burrows_hab_avg <- crab_data %>%
   filter(variable == "burrow_density") %>%
   group_by(habitat) %>%
-  summarize(mean = mean(value*4),
-            lower_cl = ci_95(value*4)["ll"],
-            upper_cl = ci_95(value*4)["ul"]) %>%
+  summarize(mean = mean(value),
+            lower_cl = ci_95(value)["ll"],
+            upper_cl = ci_95(value)["ul"]) %>%
   mutate(habitat = fct_relevel(habitat, c("bcb", "vcb", "mp", "iva")))
 
 uca_site_avg <- crab_data %>%
