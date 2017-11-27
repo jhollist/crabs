@@ -55,16 +55,19 @@ calc_correlation <- function(xdf, hab){
 
 cor_fig <- function(df, crab, title = "Correlation Matrix", ...){
   df <- df %>%
-    filter(crab_params == crab)
+    filter(crab_params == crab) %>%
+    mutate(cor_size = 
+             case_when(abs(pearson_cor) >= 0 & abs(pearson_cor) < 0.2 ~ 1,
+                       abs(pearson_cor) >= 0.2 & abs(pearson_cor) < 0.4 ~ 2,
+                       abs(pearson_cor) >= 0.4 & abs(pearson_cor) < 0.6 ~ 3,
+                       abs(pearson_cor) >= 0.6 & abs(pearson_cor) < 0.8 ~ 4),
+           cor_color = 
+             case_when(pearson_cor < 0 ~ "negative",
+                       pearson_cor > 0 ~ "positive",
+                       pearson_cor == 0 ~ "zero"))
   gg <-  ggplot(df, aes(x = habitat, y = env_params)) +
-    geom_point(aes(size = abs(pearson_cor), color = pearson_cor)) + 
-    scale_color_viridis(name = "Pearson's\ncorrelation", 
-                        limits = c(-1,1), #range(cor_df_long$value), 
-                        breaks = c(1.0, 0.5, 0.0, -0.5, -1.0) ,#round(seq(max(cor_df_long$value), min(cor_df_long$value), length.out = 5), 2),
-                        guide = guide_legend(override.aes = 
-                                               list(size = c(5,2.5,1,2.5,5)), 
-                                             reverse = FALSE)) +
-    scale_size(range = c(1,5), guide = FALSE) +
+    geom_point(aes(size = cor_size, color = cor_color)) +
+    scale_color_manual(values = c("black", "red")) +
     theme_ipsum(base_family = "sans") +
     scale_x_discrete(position = "top") +
     labs(x = "", y = "", title = title) +

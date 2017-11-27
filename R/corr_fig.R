@@ -1,6 +1,7 @@
 # Code to generate corrlation matrix figure
 source("R/functions.R")
 
+
 crab_correlations <- read_csv(here("results/crab_correlations.csv"))
 
 hab_order <- c("bcb", "vcb", "mp", "iva")
@@ -15,10 +16,13 @@ env_order <- c("Cover - SPAALT","Cover - SPAPAT","Cover - DISSPI",
                "% moisture","% organic","Shear strength")
 env_order <- env_order[length(env_order):1]
 
+# Also Filtering out correlations for which we had a small sample size
+# Less than 10 in this case.
 crab_correlations <- crab_correlations %>%
   mutate(habitat = fct_relevel(factor(habitat),hab_order),
          env_params = fct_relevel(factor(crab_correlations$env_params,
-                                         labels = env), env_order))
+                                         labels = env), env_order))  %>%
+  filter(n >= 10)
 
 bd_gg <- cor_fig(crab_correlations,"burrow_density", 
                  expression(paste("A. Burrow Density")))
