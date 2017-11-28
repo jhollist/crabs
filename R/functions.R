@@ -7,12 +7,9 @@ library(viridis)
 library(gridExtra)
 library(grid)
 library(readxl)
-library(ggridges)
 
-# Make some tweeks to theme_ipsum
 
-theme_ipsum <- theme_ipsum() +
-  theme(title = element_text(size = 14))
+
 
 
 # 95% Confidence Intervals of a vector
@@ -150,7 +147,8 @@ crab_bar <- function(df, xval, x = "x", y = "y", title = "title", breaks = 0:5,
     theme_ipsum(base_family = "sans") +
     labs(x = x, y = y, title = title) +
     scale_y_continuous(breaks = breaks) +
-    expand_limits(y=breaks)
+    expand_limits(y=breaks)+
+    theme(plot.title = element_text(size = 14))
   gg$theme$plot.margin <- grid::unit(marg,"line")
   gg
 }
@@ -168,7 +166,8 @@ temporal_scatter <- function(df, y, title, marg = rep(0.5,4)){
     scale_color_manual(values = c("darkred","darkblue")) +
     theme(legend.title = element_blank(),
           legend.position = c(0.89,0.88),
-          legend.background = element_rect(fill = "white", colour = "white"))
+          legend.background = element_rect(fill = "white", colour = "white"))+
+    theme(plot.title = element_text(size = 14))
   gg$theme$plot.margin <- grid::unit(marg,"line")
   gg
 }
@@ -262,7 +261,8 @@ size_hist <- function(df, xlab = "Burrow diameter (cm)", var = "burrow_diameter"
     geom_density(data = df, aes(value, y = ..count..),fill = "darkblue", color = "darkblue", bw = bw) +
     theme_ipsum(base_family = "sans") +
     labs(x = xlab, title = title) +
-    scale_x_continuous(limits = c(0,8))
+    scale_x_continuous(limits = c(0,8)) +
+    theme(plot.title = element_text(size = 14))
   gg$theme$plot.margin <- grid::unit(marg,"line")
   gg
 }

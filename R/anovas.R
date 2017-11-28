@@ -14,7 +14,7 @@ uca_anova <- crab_data %>%
   lm(ranks ~ marsh + habitat + marsh:habitat, data = .) %>%
   anova()
 
-carcinus_anova <- carb_data %>%
+carcinus_anova <- crab_data %>%
   filter(variable == "carcinus_cpue")%>%
   mutate(ranks = rank(value)) %>%
   lm(ranks ~ marsh + habitat + marsh:habitat, data = .) %>%
