@@ -57,17 +57,28 @@ cor_fig <- function(df, crab, title = "Correlation Matrix", ...){
   df <- df %>%
     filter(crab_params == crab) %>%
     mutate(cor_size = 
-             case_when(abs(pearson_cor) >= 0 & abs(pearson_cor) < 0.2 ~ 1,
-                       abs(pearson_cor) >= 0.2 & abs(pearson_cor) < 0.4 ~ 2,
+             case_when(abs(pearson_cor) >= 0 & abs(pearson_cor) < 0.2 ~ 2,
+                       abs(pearson_cor) >= 0.2 & abs(pearson_cor) < 0.4 ~ 2.5,
                        abs(pearson_cor) >= 0.4 & abs(pearson_cor) < 0.6 ~ 3,
-                       abs(pearson_cor) >= 0.6 & abs(pearson_cor) < 0.8 ~ 4),
+                       abs(pearson_cor) >= 0.6 & abs(pearson_cor) < 0.8 ~ 3.5),
            cor_color = 
              case_when(pearson_cor < 0 ~ "negative",
                        pearson_cor > 0 ~ "positive",
                        pearson_cor == 0 ~ "zero"))
   gg <-  ggplot(df, aes(x = habitat, y = env_params)) +
-    geom_point(aes(size = cor_size, color = cor_color)) +
-    scale_color_manual(values = c("black", "red")) +
+    geom_point(aes(size = cor_size, color = pearson_cor)) +
+    scale_color_gradient2(name = "Pearson\nCorrelation",
+                          low = "darkred", mid = "grey80", high = "darkblue",
+                          limits = c(-0.8,0.8),
+                          breaks = c(0.8, 0.6, 0.4, 0.2, -0.2, -0.4, -0.6, -0.8),
+                          labels = c("0.8 to 0.6", "0.6 to 0.4", "0.4 to 0.2", 
+                                     "0.2 to 0", "0 to -0.2", "-0.2 to -0.4",
+                                     "-0.4 to -0.6", "-0.6 to -0.8"),
+                          guide = guide_legend(override.aes = 
+                                    list(size = c(3.5,3,2.5,2,2,2.5,3,3.5)), 
+                                    reverse = FALSE,
+                                    byrow = TRUE)) +
+    scale_size(range = c(2,3.5),guide = FALSE) +
     theme_ipsum(base_family = "sans") +
     scale_x_discrete(position = "top") +
     labs(x = "", y = "", title = title) +
@@ -147,7 +158,7 @@ temporal_scatter <- function(df, y, title, marg = rep(0.5,4)){
     geom_smooth(method = "lm", se = FALSE) +
     theme_ipsum(base_family = "sans") +
     labs(x = "Year", y = y, title = title) +
-    scale_color_viridis_d() +
+    scale_color_manual(values = c("darkred","darkblue")) +
     theme(legend.title = element_blank(),
           legend.position = c(0.89,0.88),
           legend.background = element_rect(fill = "white", colour = "white"))
