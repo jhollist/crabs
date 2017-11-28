@@ -7,6 +7,13 @@ library(viridis)
 library(gridExtra)
 library(grid)
 library(readxl)
+library(ggridges)
+
+# Make some tweeks to theme_ipsum
+
+theme_ipsum <- theme_ipsum() +
+  theme(title = element_text(size = 14))
+
 
 # 95% Confidence Intervals of a vector
 ci_95 <- function(x){
@@ -239,3 +246,23 @@ multiplot <- function(..., plotlist = NULL, cols = 1,
   }
 } 
 
+# Function to generate size histograms
+
+size_hist <- function(df, xlab = "Burrow diameter (cm)", var = "burrow_diameter", backdrop = FALSE, 
+                      marg = rep(0.5,4), bw = 0.5, title = ""){
+  df_all <- df
+  df <- df %>%
+    filter(variable == var)
+  gg <- ggplot(df_all, aes(value))
+  if(backdrop){
+  gg <- gg  +
+      geom_density(aes(y = ..count..), fill = "grey80", color = "grey80", bw = bw)
+  }
+  gg <- gg +
+    geom_density(data = df, aes(value, y = ..count..),fill = "darkblue", color = "darkblue", bw = bw) +
+    theme_ipsum(base_family = "sans") +
+    labs(x = xlab, title = title) +
+    scale_x_continuous(limits = c(0,8))
+  gg$theme$plot.margin <- grid::unit(marg,"line")
+  gg
+}

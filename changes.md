@@ -6,19 +6,21 @@
   - Temporal data spreadsheet
   - jho correlation data spreadsheet
   - anova spreadsheets sent to Beth
+  - crab size distribution
 - Small differences in the various sources complicated reproducing the exact
 results in the original draft paper.  So that results are consistent, I started 
 with the Master spreadsheet, pulled those data into R and cleaned that dataset
 - Need to:
   - move master spreadsheet to data/raw.  
   - move temporal data spreadhseet to data/raw
-- Data cleaning is in data_prep_master.R
+- Data cleaning is in R/data_prep_master.R, R/data_prep_temporal.R, and R/data_prep_size.R
   - need to update Readme with this.
 - Cleaned output csv that is basis for all analysis is data/crab_data.csv
 - burrows mp in jho correlations, and mp only in master have messed up burrow 
 counts.  
 
 # Correlations
+
 - Given issues above with data, correlations re-done with master data
   - slight differences in original source data for anova vs corr
 - Also, focus on signficance dropped and all correlations reported in figure.
@@ -58,5 +60,11 @@ data/raw/jho_temporal_data_summarized.xls
 - I would like to drop the water temperature plot.  It is flat, currently on a
 plot with two y-axis, and doesn't add much to the story (IMO).
 
+# Crab size distribution
+
+- Raw data in data/raw/species size histograms.xls and brrow data for histrograms.xls
+- data read in and prepped in R/data_prep_size.R
+- Size distribution figure in R/size_fig.R
+- 
 
 # Functions
