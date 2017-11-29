@@ -1,6 +1,4 @@
-library(tidyverse)
-library(readxl)
-library(here)
+source("R/functions.R")
 
 #####################              
 ## Temporal Data Prep

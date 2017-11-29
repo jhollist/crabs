@@ -1,15 +1,13 @@
 # All functions used in analysis and viz for Raposa et al.
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
 library(here)
 library(psych)
 library(hrbrthemes)
-library(viridis)
 library(gridExtra)
 library(grid)
 library(readxl)
-
-
-
 
 
 # 95% Confidence Intervals of a vector
