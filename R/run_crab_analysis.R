@@ -13,6 +13,9 @@ source(here("R/anovas.R"))
 # Run correlations
 source(here("R/crab_calc_correlation.R"))
 
+# Run temporal stuff
+source(here("R/temporal_analysis.R"))
+
 # Generate figures
 source(here("R/corr_fig.R"))
 source(here("R/habitat_marsh_compare_fig.R"))

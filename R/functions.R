@@ -9,6 +9,7 @@ library(hrbrthemes)
 library(gridExtra)
 library(grid)
 library(readxl)
+library(broom)
 
 
 # 95% Confidence Intervals of a vector
@@ -264,4 +265,13 @@ size_hist <- function(df, xlab = "Burrow diameter (cm)", var = "burrow_diameter"
     theme(plot.title = element_text(size = 14))
   gg$theme$plot.margin <- grid::unit(marg,"line")
   gg
+}
+
+# Functions for the temporal lm
+temporal_lm <- function(df, vars){
+  df %>%
+    filter(variable == vars) %>%
+    lm(value ~ year, data = .) %>%
+    glance() %>%
+    transmute(test = paste0(vars,"_lm"), p = p.value, stat = r.squared) 
 }

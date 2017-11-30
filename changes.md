@@ -57,14 +57,18 @@ All check out, except burrow_density, shear_strength, mp.
 data/raw/jho_temporal_data_summarized.xls
 - Data read in an prepped in R/data_prep_temporal.R
 - Temporal figures built in R/temporal_fig.R
+- Temporal anlaysis in R/temporal_analysis.R
 - I would like to drop the water temperature plot.  It is flat, currently on a
 plot with two y-axis, and doesn't add much to the story (IMO).
+- t-tests and values in burrow_density bar plots are not the same as what I get. 
+Need to figure out why the difference.
+- All regressions match up
+- output in 
 
 # Crab size distribution
 
 - Raw data in data/raw/species size histograms.xls and brrow data for histrograms.xls
 - data read in and prepped in R/data_prep_size.R
 - Size distribution figure in R/size_fig.R
-- 
 
 # Functions
