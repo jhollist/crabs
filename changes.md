@@ -34,7 +34,7 @@ All check out, except burrow_density, shear_strength, mp.
   master data.  Value recorded in Table 4 is incorrect.  It is not 0.49, should 
   be -0.088.
 - Need to work on figure:  Color scheme, sizes aren't cutting it.
-- Should probably also filter out what gets plotted based on sample size.  
+- Filtered out pairs with less than 10 samples 
 
 # Anova
 
