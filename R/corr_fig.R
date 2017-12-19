@@ -36,9 +36,21 @@ carc_gg <- cor_fig(crab_correlations,"carcinus_cpue",
 ses_gg <- cor_fig(crab_correlations,"sesarma_cpue", 
                   expression(paste("D. ", italic("Sesarma"), " CPUE")))
 
-jpeg(here("figures/crab_cor_fig.jpg"), width = 6, height = 6.25, units = "in",
-     res=300)
-grid_arrange_shared_legend(bd_gg, uca_gg, carc_gg, ses_gg, ncol = 2, nrow = 2)
+titles <- ggplot() + 
+  labs(title = "Correlations between crab abundance indicators and environmental
+       parameters in four habitat types.",
+       subtitle = "Refer to the text for habitat acronyms. For vegetation, 
+       SPAALT=Spartina alterniflora, SPAPAT=Spartina patens, 
+       DISSPI=Distichlis spicata, JUNGER=Juncus gerardii, and 
+       IVAFRU=Iva frutescens. Correlations run for pairs with 10 or more 
+       samples.") + theme_void()
+
+# Correlations between crab abundance indicators and environmental parameters in four habitat types.
+
+# Refer to the text for habitat acronyms. For vegetation, SPAALT=Spartina alterniflora, SPAPAT=Spartina patens, DISSPI=Distichlis spicata, JUNGER=Juncus gerardii, and IVAFRU=Iva frutescens. Correlations run for pairs with 10 or more samples.
+
+pdf(here("figures/figure4.pdf"), width = 6, height = 6.25, onefile = FALSE)
+x<-grid_arrange_shared_legend(bd_gg, uca_gg, carc_gg, ses_gg, ncol = 2, nrow = 2)
 dev.off()
   
   

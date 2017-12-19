@@ -89,8 +89,12 @@ ch_gg <- crab_bar(carcinus_habitat_avg, "habitat", y = "Carcinus CPUE",
                   x = "Habitat type", "")
 cs_gg <- crab_bar(carcinus_site_avg, "marsh", y = "Carcinus CPUE", 
                   x = "Marsh", "")
-jpeg("figures/crab_bar_fig.jpg", width = 7.5, height = 10, units = "in", 
-     res=300)
+
+# Burrow density and crab species CPUE across the four study sites and four habitats.
+
+# Error bars are 95% confidence limits. Refer to the text for marsh and habitat acronyms.
+
+pdf("figures/figure3.pdf", width = 7.5, height = 10, onefile = FALSE)
 grid_arrange_shared_legend(bs_gg, bh_gg, us_gg, uh_gg, 
                            ss_gg, sh_gg, cs_gg, ch_gg, 
                            ncol = 2, nrow = 4, position = "none") 

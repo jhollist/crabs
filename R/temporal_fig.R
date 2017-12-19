@@ -83,7 +83,15 @@ g <- temporal_data %>%
 
 a$theme$plot.margin <- b$theme$plot.margin
 
-jpeg("figures/temporal_fig.jpg", width = 7.5, height = 10, units = "in", 
-     res=300)
-multiplot(a,c,e,b,d,f, cols = 2)
+title_plot <- ggplot(data.frame()) + 
+  labs(title = "Temporal changes in crab abundance.",
+       caption = "burrow density [A.]; Error bars are 95% confidence limits), a habitat change linked to crabs (extent of bare creekbanks [B.]), and factors that can potentially affect crab abundance, including the level of recreational fishing, defined as directed trips with primary and secondary targets of crustacean predators (C.), predation pressure by birds (D. and E.), and climate change (sea-level rise [F.]).") +
+  theme_void() +
+  theme(title = element_text(family = "serif"), 
+        plot.caption = element_text(family = "serif"))
+
+# (burrow density [A.]; Error bars are 95% confidence limits), a habitat change linked to crabs (extent of bare creekbanks [B.]), and factors that can potentially affect crab abundance, including the level of recreational fishing, defined as directed trips with primary and secondary targets of crustacean predators (C.), predation pressure by birds (D. and E.), and climate change (sea-level rise [F.]).
+
+pdf("figures/figure6.pdf", width = 7.5, height = 9, onefile = FALSE)
+x<-multiplot(a,b,c,d,e,f, layout = matrix(c(1,2,3,4,5,6), ncol = 2, byrow = T))
 dev.off()

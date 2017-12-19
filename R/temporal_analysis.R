@@ -6,14 +6,16 @@ temporal_data <- read_csv(here("data/temporal_data.csv"))
 
 bd_cb_ttest <- temporal_data %>%
   filter(variable == "burrow_density",
-         habitat == "low") %>%
+         habitat == "low",
+         year != 2014) %>%
   t.test(value ~ year, data = .) %>%
   tidy() %>%
   transmute(test =  "burrow_density_cb_ttest",p = p.value, stat = statistic)
 
 bd_mp_ttest <- temporal_data %>%
   filter(variable == "burrow_density",
-         habitat == "high") %>%
+         habitat == "high",
+         year != 2014) %>%
   t.test(value ~ year, data = .) %>%
   tidy() %>%
   transmute(test = "burrow_density_mp_ttest", p = p.value, stat = statistic)

@@ -25,7 +25,11 @@ sesarma_size_gg <- size_data %>%
             bw = bw, 
             title = expression(paste("C. ", italic("Sesarma reticulatum"))))
 
-jpeg("figures/size_fig.jpg", width = 7.5, height = 10, units = "in", 
-     res=300)
+# Density distributions of crab burrow diameters and carapace widths for Uca, Carcinus, and Sesarma.
+
+# Grey distribution represents all crab species. Note that y axes are at different scales.
+
+
+pdf("figures/figure2.pdf", width = 7.5, height = 10)
 multiplot(uca_size_gg,carcinus_size_gg, sesarma_size_gg, bd_size_gg, cols = 1)
 dev.off()
