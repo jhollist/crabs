@@ -161,8 +161,8 @@ crab_bar <- function(df, xval, x = "x", y = "y", title = "title", breaks = 0:5,
 temporal_scatter <- function(df, y, title, marg = rep(0.5,4)){
   
   gg <- df %>% 
-    ggplot(aes(x = year, y = value, color = group)) +
-    geom_point(size = 2.5) +
+    ggplot(aes(x = year, y = value, color = group, shape = group)) +
+    geom_point(size = c(2.5), alpha = 0.75) +
     geom_smooth(method = "lm", se = FALSE) +
     theme_ipsum(base_family = "sans") +
     labs(x = "Year", y = y, title = title) +

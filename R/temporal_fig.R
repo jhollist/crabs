@@ -1,4 +1,4 @@
-source(here("R/functions.R"))
+source(here::here("R/functions.R"))
 
 temporal_data <- read_csv(here("data/temporal_data.csv"))
 
