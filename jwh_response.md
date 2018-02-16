@@ -7,11 +7,16 @@
 
 **Comment:** For the correlation study shown in Fig 4, data were pooled across all four marshes to make comparisons between the four habitats and crab indicators (of population size). Yet, the 2-way ANOVA results shown in Table 2 indicate significant differences and interactions for all three crab species with location (i.e., marsh) and habitat. Is pooling justified? More specifically, my question is this: Would the trends in correlations shown in Figure 2 be the same if the data were not pooled and instead analyses done on a marsh by marsh basis and then compared? The results would be more robust. Also, did the pooled data meet the assumptions of the Pearson correlation test? Some heavy data transformation was needed to pass the assumptions of ANOVA. Nothing is mentioned for Pearson. <!-- JEFF – this might be for both of us – me interpreting the results in terms of if they would change by not pooling, you thinking about this question in general and answering his assumption Q at end…-->
     - *response:* Sample sizes unpooled?  Look at Spearman and distribution of data for assumptions, Look at correlations per Marsh much difference?  
-    
+ 
+**Comment:** strongly suggesting that we include a supplemental table of all the physical data (plant cover, height, soils, etc etc).  <!--I might do that but am wondering if those data are already available to any reader via your R scripts.  You had all the physical data to create the correlation figure.  Isn’t this stuff online already??? -->
+
+ 
+
+Have I mentioned I hate revisions?   
 
 # Reviewer 3
 
-**Comment:** l. l. 302-309, Fig. 3. There is a considerable amount of variability displayed in the one-way mean values presented in Fig. 3. What do the error bars represent? The ANOVA indicates that there is a significant difference in burrow density and crab CPUE’s among marshes, and that the difference among marshes depends on the habitat type (or, the difference among habitat types varies across marshes). Thus, it’s not that meaningful to interpret the one way means (i.e., among marshes and among habitats.) I suggest using multiple comparisons to determine significant differences among the 2-way means.  <!-- JEFF – JEFF – can you field this one?  He is asking for the stuff I originally had in the first draft, and then removed when we revised.  Again, I love what you recommended so would like to keep it as is, but to do so would need some nice text to explain this comment away.   -->
+**Comment:** l. l. 302-309, Fig. 3. There is a considerable amount of variability displayed in the one-way mean values presented in Fig. 3. What do the error bars represent? The ANOVA indicates that there is a significant difference in burrow density and crab CPUE’s among marshes, and that the difference among marshes depends on the habitat type (or, the difference among habitat types varies across marshes). Thus, it’s not that meaningful to interpret the one way means (i.e., among marshes and among habitats.) I suggest using multiple comparisons to determine significant differences among the 2-way means.  <!-- JEFF – can you field this one?  He is asking for the stuff I originally had in the first draft, and then removed when we revised.  Again, I love what you recommended so would like to keep it as is, but to do so would need some nice text to explain this comment away.   -->
     - *response:*
     
 
