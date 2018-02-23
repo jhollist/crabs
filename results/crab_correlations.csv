@@ -1,4 +1,4 @@
-habitat,crab_params,env_params,pearson_cor,n,p
+habitat,crab_params,env_params,correlation,n,p
 vcb,burrow_density,bare,0.4391622491806372,20,0.05271191690729782
 vcb,burrow_density,bulk_density,-0.40602401644072794,19,0.08454996827189776
 vcb,burrow_density,cover_disspi,0.019773872890599446,20,0.9340542851812488

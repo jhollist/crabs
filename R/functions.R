@@ -23,7 +23,7 @@ ci_95 <- function(x){
 }
 
 # Function to calculate correlation coef from crab_data csv
-calc_correlation <- function(xdf, hab){
+calc_correlation <- function(xdf, hab, method = "pearson"){
   parse_it <- function(df){
     df %>%
       mutate(variables = row.names(.)) %>%
@@ -39,12 +39,12 @@ calc_correlation <- function(xdf, hab){
     spread(variable, value) %>%
     filter(habitat == hab) %>%
     select(-habitat,-site_id, -marsh) %>%
-    corr.test(use="pairwise", adjust = "none")
+    corr.test(use="pairwise", adjust = "none", method = method)
   
   r <- data.frame(corr_df$r) %>%
     parse_it() %>%
-    gather(crab_params, pearson_cor,2:5) %>%
-    select(habitat,crab_params, env_params = variables, pearson_cor)
+    gather(crab_params, correlation, 2:5) %>%
+    select(habitat,crab_params, env_params = variables, correlation)
   n <- data.frame(corr_df$n) %>%
     parse_it() %>%
     gather(crab_params, n,2:5) %>%
@@ -64,16 +64,16 @@ cor_fig <- function(df, crab, title = "Correlation Matrix", ...){
   df <- df %>%
     filter(crab_params == crab) %>%
     mutate(cor_size = 
-             case_when(abs(pearson_cor) >= 0 & abs(pearson_cor) < 0.2 ~ 2,
-                       abs(pearson_cor) >= 0.2 & abs(pearson_cor) < 0.4 ~ 2.5,
-                       abs(pearson_cor) >= 0.4 & abs(pearson_cor) < 0.6 ~ 3,
-                       abs(pearson_cor) >= 0.6 & abs(pearson_cor) < 0.8 ~ 3.5),
+             case_when(abs(correlation) >= 0 & abs(correlation) < 0.2 ~ 2,
+                       abs(correlation) >= 0.2 & abs(correlation) < 0.4 ~ 2.5,
+                       abs(correlation) >= 0.4 & abs(correlation) < 0.6 ~ 3,
+                       abs(correlation) >= 0.6 & abs(correlation) < 0.8 ~ 3.5),
            cor_color = 
-             case_when(pearson_cor < 0 ~ "negative",
-                       pearson_cor > 0 ~ "positive",
-                       pearson_cor == 0 ~ "zero"))
+             case_when(correlation < 0 ~ "negative",
+                       correlation > 0 ~ "positive",
+                       correlation == 0 ~ "zero"))
   gg <-  ggplot(df, aes(x = habitat, y = env_params)) +
-    geom_point(aes(size = cor_size, color = pearson_cor)) +
+    geom_point(aes(size = cor_size, color = correlation)) +
     scale_color_gradient2(name = "Pearson\nCorrelation",
                           low = "darkred", mid = "grey80", high = "darkblue",
                           limits = c(-0.8,0.8),
