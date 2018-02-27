@@ -11,7 +11,7 @@ uca_size_gg <- size_data %>%
   filter(variable != "burrow_diameter") %>%
   size_hist(xlab = "Carapace width (cm)", "uca_carapace", backdrop = TRUE, 
             bw = bw, 
-            title = expression(paste("A. ", italic("Uca"), "spp.")))
+            title = expression(paste("A. ", italic("Uca "), "spp.")))
 
 carcinus_size_gg <- size_data %>%
   filter(variable != "burrow_diameter") %>%

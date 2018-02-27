@@ -1,7 +1,9 @@
 # Code to generate marsh/site crab comparison charts
 source("R/functions.R")
 
-crab_data <- read_csv(here("data/crab_data.csv"))
+crab_data <- read_csv(here("data/crab_data.csv")) %>%
+  mutate(marsh = case_when(marsh == "cogg" ~ "cog",
+                   TRUE ~ marsh))
 
 burrows_site_avg <- crab_data %>%
   filter(variable == "burrow_density") %>%
