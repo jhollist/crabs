@@ -1,7 +1,6 @@
 # Code to generate corrlation matrix figure
 source("R/functions.R")
 
-
 crab_correlations <- read_csv(here("results/crab_correlations.csv"))
 
 hab_order <- c("bcb", "vcb", "mp", "iva")
@@ -52,7 +51,6 @@ titles <- ggplot() +
 pdf(here("figures/figure4.pdf"), width = 6, height = 6.25, onefile = FALSE)
 x<-grid_arrange_shared_legend(bd_gg, uca_gg, carc_gg, ses_gg, ncol = 2, nrow = 2)
 dev.off()
-  
   
 
  
