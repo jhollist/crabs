@@ -17,7 +17,7 @@ a <- temporal_data %>%
   geom_linerange(aes(ymin = lower_cl, ymax = upper_cl), 
                  size = 1.25, position = position_dodge(width = 0.5)) +
   theme_ipsum(base_family = "sans") +
-  labs(x = "", y = "Burrow density", title = "A.") + 
+  labs(x = "", y = expression(Burrow~density~(number~m^{-2})), title = "A.") + 
   scale_x_discrete(position = "top") +
   annotate("text", x=c(0.875,1.125,1.875,2.125), y=-5, 
            label= c("1998","2016", "1998","2016"),
