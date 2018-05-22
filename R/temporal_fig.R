@@ -31,7 +31,7 @@ b <- temporal_data %>%
   mutate(group = case_when(site_id == "cogg" ~ "Coggeshall",
                              site_id == "nag" ~ "Nag West",
                              TRUE ~ site_id)) %>%
-  temporal_scatter(y = bquote("Extent of bare creekbank (m"^"2)"), title = "B.") +
+  temporal_scatter(y = bquote("Extent of bare creekbank (m"^2*" )"), title = "B.") +
   theme(legend.position = c(0.2,0.85))
 
 # C. Fishing effort
@@ -70,7 +70,7 @@ e <- temporal_data %>%
 f <- temporal_data %>%
   filter(grepl("high_water",variable)) %>%
   mutate(group = "Mean high water") %>%
-  temporal_scatter(y = "Mean high water(m NAVD 88)", title = "F.") +
+  temporal_scatter(y = "Mean high water (m NAVD 88)", title = "F.") +
   theme(legend.position =  "none")
 
 # G. Temperature
